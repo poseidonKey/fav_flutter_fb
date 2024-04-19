@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1079144779143",
+    "project_id": "fav-flutter-fb",
+    "storage_bucket": "fav-flutter-fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079144779143:android:26c4672fb5bde90e975722",
+        "android_client_info": {
+          "package_name": "com.example.fav_flutter_fb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHbdQVWaZ1twThxDDJn5vloC1kIvbleck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
