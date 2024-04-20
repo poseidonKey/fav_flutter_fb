@@ -1,5 +1,7 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:fav_flutter_fb/firebase_options.dart';
 import 'package:fav_flutter_fb/screen/home_screen.dart';
+import 'package:fav_flutter_fb/screen/home_screen_fb.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,9 +21,35 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Material App',
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: Center(
+        child: FutureBuilder<ConnectivityResult>(
+          future: Connectivity().checkConnectivity(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const CircularProgressIndicator();
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else {
+              switch (snapshot.data) {
+                case ConnectivityResult.wifi:
+                // connectivityStatus = 'Connected to Wi-Fi';
+                case ConnectivityResult.mobile:
+                  // connectivityStatus = 'Connected to mobile data';
+                  return const HomeScreenFirebase();
+                case ConnectivityResult.none:
+                  // connectivityStatus = 'No internet connection';
+                  return const HomeScreen();
+                default:
+                  // connectivityStatus = 'Unknown';
+                  return Container();
+              }
+            }
+          },
+        ),
+      ),
     );
   }
 }

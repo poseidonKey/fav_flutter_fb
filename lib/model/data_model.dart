@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class DataModel {
   final String no;
   final String name;
@@ -12,6 +14,15 @@ class DataModel {
     required this.code,
     required this.alt,
   });
+  factory DataModel.fromSnapshot(DocumentSnapshot snapshot) {
+    return DataModel(
+      no: snapshot['no'],
+      name: snapshot['name'],
+      url: snapshot['url'],
+      code: snapshot['code'],
+      alt: snapshot['alt'],
+    );
+  }
   DataModel.fromJson({required Map<String, dynamic> json})
       : no = json['no'],
         name = json['name'],

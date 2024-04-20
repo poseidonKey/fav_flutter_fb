@@ -1,7 +1,7 @@
 import 'package:fav_flutter_fb/model/category_model.dart';
 import 'package:fav_flutter_fb/provider/category_provider.dart';
 import 'package:fav_flutter_fb/screen/data_screen.dart';
-import 'package:fav_flutter_fb/screen/fire_base_screen.dart';
+import 'package:fav_flutter_fb/screen/fire_base_category_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -33,7 +33,7 @@ class HomeScreen extends ConsumerWidget {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const FirebaseScreen(),
+                        builder: (context) => const FirebaseCategoryScreen(),
                       ),
                     );
                   },
