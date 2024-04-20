@@ -12,7 +12,6 @@ class DataScreenFirebase extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(onPressed: () {}, icon: const Icon(Icons.tab)),
           title: Text(
             '내 즐겨찾기 Data : [ $category ]',
             style: const TextStyle(
@@ -56,7 +55,9 @@ class DataScreenFirebase extends StatelessWidget {
                       return Dismissible(
                         key: ObjectKey(model.no),
                         direction: DismissDirection.startToEnd,
-                        onDismissed: (direction) async {},
+                        onDismissed: (direction) async {
+                          deleteData(no: model.no);
+                        },
                         child: ListTile(
                           onTap: () async {
                             showModalBottomSheet(
@@ -170,6 +171,11 @@ class DataScreenFirebase extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> deleteData({required String no}) async {
+    // Fetch data from Firestore collection
+    await FirebaseFirestore.instance.collection('favData').doc(no).delete();
   }
 
   Future<List<DataModel?>> fetchDataAndSortByNo() async {

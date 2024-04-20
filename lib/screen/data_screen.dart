@@ -1,5 +1,6 @@
 import 'package:fav_flutter_fb/model/data_model.dart';
 import 'package:fav_flutter_fb/provider/data_provider.dart';
+import 'package:fav_flutter_fb/screen/fire_base_data_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,9 +14,18 @@ class DataScreen extends ConsumerWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('내 즐겨찾기 Data'),
-        ),
+        appBar: AppBar(title: const Text('내 즐겨찾기 Data'), actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => FirebaseDataScreen(category: category),
+                ),
+              );
+            },
+            icon: const Icon(Icons.manage_search),
+          ),
+        ]),
         body: Column(
           children: [
             Expanded(

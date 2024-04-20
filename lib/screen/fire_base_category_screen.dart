@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fav_flutter_fb/provider/category_provider.dart';
+import 'package:fav_flutter_fb/screen/search_screen_fb.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,7 +32,19 @@ class FirebaseCategoryScreen extends ConsumerWidget {
                 print('success');
               },
               child: const Text('Category Add'),
-            )
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const SearchScreenFirebase(),
+                    ),
+                  );
+                },
+                child: const Text('Search'))
           ],
         ),
       ),

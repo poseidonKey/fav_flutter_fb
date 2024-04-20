@@ -25,6 +25,8 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       // home: HomeScreen(),
       home: Center(
+        // 데이터 관리용
+        // child: HomeScreen(),
         child: FutureBuilder<ConnectivityResult>(
           future: Connectivity().checkConnectivity(),
           builder: (context, snapshot) {
@@ -44,7 +46,9 @@ class MyApp extends StatelessWidget {
                   return const HomeScreen();
                 default:
                   // connectivityStatus = 'Unknown';
-                  return Container();
+                  return Container(
+                    child: const Text('Unknown Error... retry'),
+                  );
               }
             }
           },
