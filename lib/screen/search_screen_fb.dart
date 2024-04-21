@@ -15,7 +15,7 @@ class SearchScreenFirebase extends StatelessWidget {
         stream: FirebaseFirestore.instance
             .collection(
                 'favData') // Replace 'your_collection' with your collection name
-            .where('name', isEqualTo: '부산시교육청')
+            .where('name', arrayContains: 'Coo')
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
